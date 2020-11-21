@@ -1,28 +1,32 @@
 package com.example.cs5610fall2020projectteam23serverjava.controllers;
 
+import com.example.cs5610fall2020projectteam23serverjava.models.RegisteredUser;
 import com.example.cs5610fall2020projectteam23serverjava.models.User;
+import com.example.cs5610fall2020projectteam23serverjava.services.RegisteredUserService;
 import com.example.cs5610fall2020projectteam23serverjava.services.UserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class UserController {
+public class RegisteredUserController {
     @Autowired
-    UserService service;
+    RegisteredUserService service;
 
-    @GetMapping("/api/users/{userId}")
-    public User findUserById(
-            @PathVariable("userId") Integer id) {
+    @GetMapping("/api/registeredUser/{registeredUserId}")
+    public RegisteredUser findUserById(
+            @PathVariable("registeredUserId") Integer id) {
         return service.findUserById(id);
     }
 
 
-    @GetMapping("/api/users")
-    public List<User> findAllUsers() {
+    @GetMapping("/api/registeredUsers")
+    public List<RegisteredUser> findAllRegisteredUser() {
         return service.findAllUsers();
     }
 

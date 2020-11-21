@@ -1,29 +1,33 @@
 package com.example.cs5610fall2020projectteam23serverjava.controllers;
 
-import com.example.cs5610fall2020projectteam23serverjava.models.User;
-import com.example.cs5610fall2020projectteam23serverjava.services.UserService;
-
+import com.example.cs5610fall2020projectteam23serverjava.models.Administrator;
+import com.example.cs5610fall2020projectteam23serverjava.models.RegisteredUser;
+import com.example.cs5610fall2020projectteam23serverjava.services.AdministratorService;
+import com.example.cs5610fall2020projectteam23serverjava.services.RegisteredUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class UserController {
+public class AdministratorController {
     @Autowired
-    UserService service;
+    AdministratorService service;
 
-    @GetMapping("/api/users/{userId}")
-    public User findUserById(
-            @PathVariable("userId") Integer id) {
-        return service.findUserById(id);
+    @GetMapping("/api/administrator/{administratorId}")
+    public Administrator findUserById(
+            @PathVariable("administratorId") Integer id) {
+        return service.findAdministratorById(id);
     }
 
 
-    @GetMapping("/api/users")
-    public List<User> findAllUsers() {
-        return service.findAllUsers();
+    @GetMapping("/api/administrators")
+    public List<Administrator> findAllAdministratorId() {
+        return service.findAllAdministrator();
     }
 
 
