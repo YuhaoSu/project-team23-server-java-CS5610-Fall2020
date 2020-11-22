@@ -2,6 +2,7 @@ package com.example.cs5610fall2020projectteam23serverjava.models;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name="registerUsers")
@@ -17,8 +18,8 @@ public class RegisteredUser extends User{
         this.phone = phone;
     }
 
-    public RegisteredUser(Integer id, String username, String password, String email, Date dob, String phone) {
-        super(id, username, password, email);
+    public RegisteredUser(Integer id, String username, String password, String email, List<Review> reviews, Date dob, String phone) {
+        super(id, username, password, email, reviews);
         this.dob = dob;
         this.phone = phone;
     }
