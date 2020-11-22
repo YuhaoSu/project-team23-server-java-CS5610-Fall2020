@@ -1,5 +1,6 @@
 package com.example.cs5610fall2020projectteam23serverjava.controllers;
 
+//import com.example.cs5610fall2020projectteam23serverjava.models.Administrator;
 import com.example.cs5610fall2020projectteam23serverjava.models.User;
 import com.example.cs5610fall2020projectteam23serverjava.services.UserService;
 
@@ -20,11 +21,30 @@ public class UserController {
         return service.findUserById(id);
     }
 
-
     @GetMapping("/api/users")
-    public List<User> findAllUsers() {
+    public List<User> findAllUser() {
         return service.findAllUsers();
     }
+
+
+
+    @PostMapping("/api/users")
+    public User createUser(
+            @RequestBody User user) {
+        return service.createUser(user);
+    }
+
+    @PutMapping("/api/users")
+    public User updateUser(
+            @RequestBody User newUser) {
+        return service.updateUser(newUser);
+    }
+
+
+
+
+
+
 
 
 /*    @GetMapping("/api/topics/{topicId}/widgets")

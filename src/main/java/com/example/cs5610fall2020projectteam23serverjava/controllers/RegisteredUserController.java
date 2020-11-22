@@ -1,14 +1,12 @@
 package com.example.cs5610fall2020projectteam23serverjava.controllers;
 
+//import com.example.cs5610fall2020projectteam23serverjava.models.Administrator;
 import com.example.cs5610fall2020projectteam23serverjava.models.RegisteredUser;
 import com.example.cs5610fall2020projectteam23serverjava.models.User;
 import com.example.cs5610fall2020projectteam23serverjava.services.RegisteredUserService;
 import com.example.cs5610fall2020projectteam23serverjava.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +17,7 @@ public class RegisteredUserController {
     RegisteredUserService service;
 
     @GetMapping("/api/registeredUser/{registeredUserId}")
-    public RegisteredUser findUserById(
+    public RegisteredUser findRegisteredUserId(
             @PathVariable("registeredUserId") Integer id) {
         return service.findUserById(id);
     }
@@ -28,6 +26,18 @@ public class RegisteredUserController {
     @GetMapping("/api/registeredUsers")
     public List<RegisteredUser> findAllRegisteredUser() {
         return service.findAllUsers();
+    }
+
+    @PostMapping("/api/registeredUsers")
+    public RegisteredUser createRegisteredUser(
+            @RequestBody RegisteredUser registeredUser) {
+        return service.createRegisteredUser(registeredUser);
+    }
+
+    @PutMapping("/api/registeredUsers")
+    public RegisteredUser updateRegisteredUser(
+            @RequestBody RegisteredUser newRegisteredUser) {
+        return service.updateRegisteredUser(newRegisteredUser);
     }
 
 
