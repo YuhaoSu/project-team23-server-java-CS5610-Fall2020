@@ -46,6 +46,10 @@ public class RegisteredUserService {
         }
     }
 
+    public void deleteRegisteredUser(
+            Integer registeredUserId) {
+        registeredUserRepository.deleteById(registeredUserId);
+    }
 
 
 /*

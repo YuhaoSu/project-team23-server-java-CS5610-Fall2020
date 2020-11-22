@@ -40,7 +40,11 @@ public class UserController {
         return service.updateUser(newUser);
     }
 
-
+    @DeleteMapping("/api/users/{userId}")
+    public void deleteUser(
+            @PathVariable("userId") Integer userId) {
+        service.deleteUser(userId);
+    }
 
 
 

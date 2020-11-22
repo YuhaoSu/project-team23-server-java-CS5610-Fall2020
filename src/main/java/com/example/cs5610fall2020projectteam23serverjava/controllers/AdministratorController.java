@@ -40,6 +40,11 @@ public class AdministratorController {
         return service.updateAdministrator(newAdministrator);
     }
 
+    @DeleteMapping("/api/administrator/{administratorId}")
+    public void deleteAdministrator(
+            @PathVariable("administratorId") Integer administratorId) {
+        service.deleteAdministrator(administratorId);
+    }
 
 
 /*    @GetMapping("/api/topics/{topicId}/widgets")

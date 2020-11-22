@@ -44,6 +44,11 @@ public class AdministratorService {
         }
     }
 
+    public void deleteAdministrator(
+            Integer administratorId) {
+        administratorRepository.deleteById(administratorId);
+    }
+
 
 
 /*

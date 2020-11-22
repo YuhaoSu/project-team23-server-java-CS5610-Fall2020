@@ -17,20 +17,9 @@ public class UserService {
         return userRepository.findById(userId).get();
     }
 
-/*
-    public List<User> findAllUsers() {
-
-
-        return (List<User>) userRepository.findAll();
-    }
-*/
-
-
     public List<User> findAllUsers() {
         return (List<User>) userRepository.findAll();
     }
-
-
 
     public User createUser (User user) {
         return userRepository.save(user);
@@ -50,6 +39,13 @@ public class UserService {
             return null;
         }
     }
+
+    public void deleteUser(
+            Integer userId) {
+        userRepository.deleteById(userId);
+    }
+
+
 
 
 /*

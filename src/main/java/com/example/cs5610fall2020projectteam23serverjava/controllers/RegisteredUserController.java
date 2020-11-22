@@ -40,6 +40,13 @@ public class RegisteredUserController {
         return service.updateRegisteredUser(newRegisteredUser);
     }
 
+    @DeleteMapping("/api/registeredUser/{registeredUserId}")
+    public void deleteRegisteredUser(
+            @PathVariable("registeredUserId") Integer registeredUserId) {
+        service.deleteRegisteredUser(registeredUserId);
+    }
+
+
 
 /*    @GetMapping("/api/topics/{topicId}/widgets")
     public List<User> findWidgetsForTopic(
