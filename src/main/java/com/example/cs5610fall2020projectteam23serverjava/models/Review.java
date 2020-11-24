@@ -15,14 +15,18 @@ public class Review {
     @ManyToOne
     @JsonIgnore
     private User user;
+    @ManyToOne
+    @JsonIgnore
+    private Movie movie;
 
     public Review() {
     }
 
-    public Review(Integer reviewId, String reviewContent, User user) {
+    public Review(Integer reviewId, String reviewContent, User user, Movie movie) {
         this.reviewId = reviewId;
         this.reviewContent = reviewContent;
         this.user = user;
+        this.movie = movie;
     }
 
     public Integer getReviewId() {
@@ -47,5 +51,13 @@ public class Review {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 }

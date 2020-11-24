@@ -1,7 +1,5 @@
 package com.example.cs5610fall2020projectteam23serverjava.services;
 
-//import com.example.cs5610fall2020projectteam23serverjava.models.Administrator;
-
 import com.example.cs5610fall2020projectteam23serverjava.models.Review;
 import com.example.cs5610fall2020projectteam23serverjava.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,12 +1,7 @@
 package com.example.cs5610fall2020projectteam23serverjava.controllers;
 
-//import com.example.cs5610fall2020projectteam23serverjava.models.Administrator;
-
 import com.example.cs5610fall2020projectteam23serverjava.models.Review;
-import com.example.cs5610fall2020projectteam23serverjava.models.User;
-import com.example.cs5610fall2020projectteam23serverjava.repositories.ReviewRepository;
-import com.example.cs5610fall2020projectteam23serverjava.repositories.UserRepository;
-import com.example.cs5610fall2020projectteam23serverjava.services.UserReviewService;
+import com.example.cs5610fall2020projectteam23serverjava.services.UserMovieReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +9,9 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class reviewController {
+public class ReviewController {
     @Autowired
-    UserReviewService service;
+    UserMovieReviewService service;
 
     @GetMapping("/api/reviews/{reviewId}")
     public Review findReviewById(
@@ -29,11 +24,12 @@ public class reviewController {
         return service.findAllReview();
     }
 
-    @PostMapping("/api/reviews/{userId}")
+    @PostMapping("/api/reviews/{userId}/{movieId}")
     public Review createReview(
             @PathVariable("userId") Integer userId,
+            @PathVariable("movieId") Integer movieId,
             @RequestBody Review review) {
-        return service.createReview(userId, review);
+        return service.createReview(userId, review, movieId);
     }
 
     @PutMapping("/api/reviews")
