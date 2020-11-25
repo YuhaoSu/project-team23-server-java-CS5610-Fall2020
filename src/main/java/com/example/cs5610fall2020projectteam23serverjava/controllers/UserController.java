@@ -7,10 +7,11 @@ import com.example.cs5610fall2020projectteam23serverjava.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class UserController {
     @Autowired
     UserService service;
@@ -34,10 +35,11 @@ public class UserController {
         return service.createUser(user);
     }
 
-    @PutMapping("/api/users")
+    @PutMapping("/api/users/")
     public User updateUser(
+//            @PathVariable("userId") Integer userId,
             @RequestBody User newUser) {
-        return service.updateUser(newUser);
+        return service.updateUser( newUser);
     }
 
     @DeleteMapping("/api/users/{userId}")
@@ -45,5 +47,6 @@ public class UserController {
             @PathVariable("userId") Integer userId) {
         service.deleteUser(userId);
     }
+
 
 }

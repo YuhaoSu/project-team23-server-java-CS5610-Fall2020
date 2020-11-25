@@ -50,4 +50,8 @@ public class RegisteredUserService {
             Integer registeredUserId) {
         registeredUserRepository.deleteById(registeredUserId);
     }
+
+    public User findRegisteredUserByCredentials(String username, String password) {
+        return registeredUserRepository.findRegisteredUserByCredentials(username, password);
+    }
 }

@@ -8,10 +8,13 @@ import com.example.cs5610fall2020projectteam23serverjava.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+//@CrossOrigin(origins = "*")
+
 public class RegisteredUserController {
     @Autowired
     RegisteredUserService service;
@@ -21,7 +24,6 @@ public class RegisteredUserController {
             @PathVariable("registeredUserId") Integer id) {
         return service.findUserById(id);
     }
-
 
     @GetMapping("/api/registeredUsers")
     public List<RegisteredUser> findAllRegisteredUser() {
@@ -44,6 +46,34 @@ public class RegisteredUserController {
     public void deleteRegisteredUser(
             @PathVariable("registeredUserId") Integer registeredUserId) {
         service.deleteRegisteredUser(registeredUserId);
+    }
+
+    @PostMapping("/api/registeredUsers/")
+    public User register(HttpSession session,
+                         @RequestBody RegisteredUser newRegisteredUser) {
+        User newUser = service.createRegisteredUser(newRegisteredUser);
+        session.setAttribute("currentRegisteredUser", newUser);
+        return newUser;
+    }
+
+//    @PostMapping("/api/profile")
+//    public User profile(HttpSession session) {
+//        User profile = (User)session.getAttribute("profile");
+//        return profile;
+//    }
+
+    @PostMapping("/api/logoutRegisteredUser/")
+    public void logout(HttpSession session) {
+        session.invalidate();
+    }
+
+//    http://localhost:8080/api/loginRegisteredUser
+    @PostMapping("/api/loginRegisteredUser/")
+    public User login(HttpSession session,
+                      @RequestBody User user) {
+        User currentRegisteredUser = service.findRegisteredUserByCredentials(user.getUsername(), user.getPassword());
+        session.setAttribute("currentRegisteredUser", currentRegisteredUser);
+        return currentRegisteredUser;
     }
 
 }

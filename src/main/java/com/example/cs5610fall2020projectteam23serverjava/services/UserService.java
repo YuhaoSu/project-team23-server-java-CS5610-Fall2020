@@ -5,6 +5,10 @@ import com.example.cs5610fall2020projectteam23serverjava.models.User;
 import com.example.cs5610fall2020projectteam23serverjava.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,9 +30,11 @@ public class UserService {
     }
 
     public User updateUser(
+//            Integer userId,
             User newUser) {
 
         Optional newUserTemp = userRepository.findById(newUser.getId());
+//        Optional newUserTemp = userRepository.findById(userId);
         if(newUserTemp.isPresent()) {
             User user = (User) newUserTemp.get();
             user.setEmail(newUser.getEmail());
@@ -44,5 +50,7 @@ public class UserService {
             Integer userId) {
         userRepository.deleteById(userId);
     }
+
+
 
 }

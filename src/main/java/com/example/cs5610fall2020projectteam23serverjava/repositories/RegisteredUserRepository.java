@@ -9,6 +9,15 @@ import org.springframework.data.repository.query.Param;
 public interface RegisteredUserRepository
     extends CrudRepository<RegisteredUser, Integer> {
 
+    @Query("SELECT user FROM User user WHERE user.username=:username AND user.password=:password")
+//    @Query(value = "select * from users where username=:userName and password =:passWord", nativeQuery = true)
+//    @Query("SELECT user FROM users WHERE user.username=:username AND user.password=:password")
+
+    public User findRegisteredUserByCredentials(
+            @Param("username") String username,
+            @Param("password") String password
+    );
+
 
 
 
