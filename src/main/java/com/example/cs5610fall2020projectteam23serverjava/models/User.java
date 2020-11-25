@@ -8,30 +8,25 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer userId;
     private String username;
     private String password;
     private String email;
     @OneToMany(mappedBy = "user")
-    private List<Review> reviews;
+    private List<Review> movies;
 
     public User() {
     }
 
-    public User(Integer id, String username, String password, String email, List<Review> reviews) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.reviews = reviews;
+    public User(Integer userId, String username, String password, String email, List<Review> movies) {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -59,10 +54,10 @@ public class User {
     }
 
     public List<Review> getReviews() {
-        return reviews;
+        return movies;
     }
 
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
+    public void setReviews(List<Review> movies) {
+        this.movies = movies;
     }
 }

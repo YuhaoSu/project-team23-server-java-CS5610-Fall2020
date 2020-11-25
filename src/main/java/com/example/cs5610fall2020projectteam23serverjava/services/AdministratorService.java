@@ -31,7 +31,7 @@ public class AdministratorService {
     public Administrator updateAdministrator(
             Administrator newAdministrator) {
 
-        Optional newAdministratorTemp = administratorRepository.findById(newAdministrator.getId());
+        Optional newAdministratorTemp = administratorRepository.findById(newAdministrator.getUserId());
         if(newAdministratorTemp.isPresent()) {
             Administrator administrator = (Administrator) newAdministratorTemp.get();
             administrator.setEmail(newAdministrator.getEmail());

@@ -13,17 +13,17 @@ public class Movie {
     private String title;
     private String year;
     @OneToMany(mappedBy = "movie")
-    private List<Review> reviews;
+    private List<Review> users;
 
     public Movie () {
     }
 
-    public Movie(Integer movieId, String imdbID, String title, String year, List<Review> reviews) {
+    public Movie(Integer movieId, String imdbID, String title, String year, List<Review> users) {
         this.movieId = movieId;
         this.imdbID = imdbID;
         this.title = title;
         this.year = year;
-        this.reviews = reviews;
+        this.users = users;
     }
 
     public Integer getMovieId() {
@@ -59,10 +59,10 @@ public class Movie {
     }
 
     public List<Review> getReviews() {
-        return reviews;
+        return users;
     }
 
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
+    public void setReviews(List<Review> users) {
+        this.users = users;
     }
 }

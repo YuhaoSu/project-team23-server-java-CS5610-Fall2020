@@ -18,8 +18,8 @@ public class RegisteredUser extends User{
         this.phone = phone;
     }
 
-    public RegisteredUser(Integer id, String username, String password, String email, List<Review> reviews, Date dob, String phone) {
-        super(id, username, password, email, reviews);
+    public RegisteredUser(Integer userId, String username, String password, String email, List<Review> reviews, Date dob, String phone) {
+        super(userId, username, password, email, reviews);
         this.dob = dob;
         this.phone = phone;
     }

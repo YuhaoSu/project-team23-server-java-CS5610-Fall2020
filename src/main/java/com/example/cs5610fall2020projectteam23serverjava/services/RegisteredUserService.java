@@ -32,7 +32,7 @@ public class RegisteredUserService {
     public RegisteredUser updateRegisteredUser(
             RegisteredUser newRegisteredUser) {
 
-        Optional newRegisteredUserTemp = registeredUserRepository.findById(newRegisteredUser.getId());
+        Optional newRegisteredUserTemp = registeredUserRepository.findById(newRegisteredUser.getUserId());
         if(newRegisteredUserTemp.isPresent()) {
             RegisteredUser registeredUser = (RegisteredUser) newRegisteredUserTemp.get();
             registeredUser.setEmail(newRegisteredUser.getEmail());

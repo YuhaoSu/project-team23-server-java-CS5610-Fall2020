@@ -28,7 +28,7 @@ public class UserService {
     public User updateUser(
             User newUser) {
 
-        Optional newUserTemp = userRepository.findById(newUser.getId());
+        Optional newUserTemp = userRepository.findById(newUser.getUserId());
         if(newUserTemp.isPresent()) {
             User user = (User) newUserTemp.get();
             user.setEmail(newUser.getEmail());

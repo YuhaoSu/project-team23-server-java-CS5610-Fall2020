@@ -1,3 +1,4 @@
+/*
 package com.example.cs5610fall2020projectteam23serverjava.services;
 
 import com.example.cs5610fall2020projectteam23serverjava.models.Review;
@@ -25,7 +26,8 @@ public class ReviewService {
         return reviewRepository.save(review);
     }
 
-    public Review updateReview(
+   */
+/* public Review updateReview(
             Review newReview) {
 
         Optional newReviewTemp = reviewRepository.findById(newReview.getReviewId());
@@ -37,10 +39,12 @@ public class ReviewService {
         } else {
             return null;
         }
-    }
+    }*//*
+
 
     public void deleteReview(
             Integer reviewId) {
         reviewRepository.deleteById(reviewId);
     }
 }
+*/

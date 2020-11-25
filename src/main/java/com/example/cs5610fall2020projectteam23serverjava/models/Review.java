@@ -7,34 +7,51 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="reviews")
+@IdClass(ReviewId.class)
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer reviewId;
+    private Integer userId;
+    @Id
+    private Integer movieId;
     private String reviewContent;
     @ManyToOne
+    @PrimaryKeyJoinColumn
+            (name="userId",
+                    referencedColumnName="userId")
     @JsonIgnore
     private User user;
     @ManyToOne
+    @PrimaryKeyJoinColumn
+            (name="movieId",
+                    referencedColumnName="movieId")
     @JsonIgnore
     private Movie movie;
 
     public Review() {
     }
 
-    public Review(Integer reviewId, String reviewContent, User user, Movie movie) {
-        this.reviewId = reviewId;
+    public Review(Integer movieId, Integer userId, String reviewContent, User user, Movie movie) {
+        this.movieId = movieId;
+        this.userId = userId;
         this.reviewContent = reviewContent;
         this.user = user;
         this.movie = movie;
     }
 
-    public Integer getReviewId() {
-        return reviewId;
+    public Integer getMovieId() {
+        return movieId;
     }
 
-    public void setReviewId(Integer reviewId) {
-        this.reviewId = reviewId;
+    public void setMovieId(Integer movieId) {
+        this.movieId = movieId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getReviewContent() {
