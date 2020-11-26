@@ -7,7 +7,10 @@ import com.example.cs5610fall2020projectteam23serverjava.repositories.Registered
 import com.example.cs5610fall2020projectteam23serverjava.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,9 +28,6 @@ public class RegisteredUserService {
     }
 
 
-    public RegisteredUser createRegisteredUser (RegisteredUser registeredUser) {
-        return registeredUserRepository.save(registeredUser);
-    }
 
     public RegisteredUser updateRegisteredUser(
             RegisteredUser newRegisteredUser) {
@@ -49,4 +49,35 @@ public class RegisteredUserService {
             Integer registeredUserId) {
         registeredUserRepository.deleteById(registeredUserId);
     }
+
+
+    public void logout(HttpSession session) {
+        session.invalidate();
+    }
+
+    public RegisteredUser login(HttpSession session,
+                      @RequestBody User user) {
+        RegisteredUser profile = registeredUserRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+        session.setAttribute("profile", profile);
+        return profile;
+    }
+
+    public RegisteredUser createRegisteredUser(HttpSession session,
+                         @RequestBody RegisteredUser registeredUser) {
+        RegisteredUser newUser = registeredUserRepository.save(registeredUser);
+        session.setAttribute("profile", newUser);
+        return newUser;
+    }
+
+    @PostMapping("/profile")
+    public User profile(HttpSession session) {
+        User profile = (User)session.getAttribute("profile");
+        return profile;
+    }
+
+
+
+
+
+
 }

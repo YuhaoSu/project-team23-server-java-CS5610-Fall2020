@@ -7,13 +7,15 @@ import com.example.cs5610fall2020projectteam23serverjava.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class UserController {
     @Autowired
     UserService service;
+
 
     @GetMapping("/api/users/{userId}")
     public User findUserById(
@@ -29,9 +31,9 @@ public class UserController {
 
 
     @PostMapping("/api/users")
-    public User createUser(
-            @RequestBody User user) {
-        return service.createUser(user);
+    public User createUser(HttpSession session,
+                           @RequestBody User user) {
+        return service.register(session, user);
     }
 
     @PutMapping("/api/users")
@@ -44,6 +46,23 @@ public class UserController {
     public void deleteUser(
             @PathVariable("userId") Integer userId) {
         service.deleteUser(userId);
+    }
+
+    @PostMapping("/api/users/profile")
+    public User profile(HttpSession session) {
+        User profile = (User)session.getAttribute("profile");
+        return profile;
+    }
+
+    @PostMapping("/api/users/logout")
+    public void logout(HttpSession session) {
+        service.logout(session);
+    }
+
+    @PostMapping("/api/users//login")
+    public User login(HttpSession session,
+                      @RequestBody User user) {
+        return service.login(session, user);
     }
 
 }

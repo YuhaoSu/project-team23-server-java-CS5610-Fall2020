@@ -10,6 +10,10 @@ public interface RegisteredUserRepository
     extends CrudRepository<RegisteredUser, Integer> {
 
 
-
+    @Query("SELECT user FROM User user WHERE user.username=:username AND user.password=:password")
+    public RegisteredUser findUserByCredentials(
+            @Param("username") String username,
+            @Param("password") String password
+    );
 
 }

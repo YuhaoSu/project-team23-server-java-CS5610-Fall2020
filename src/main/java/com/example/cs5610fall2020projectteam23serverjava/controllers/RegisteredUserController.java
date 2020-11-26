@@ -8,10 +8,11 @@ import com.example.cs5610fall2020projectteam23serverjava.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class RegisteredUserController {
     @Autowired
     RegisteredUserService service;
@@ -28,11 +29,7 @@ public class RegisteredUserController {
         return service.findAllUsers();
     }
 
-    @PostMapping("/api/registeredUsers")
-    public RegisteredUser createRegisteredUser(
-            @RequestBody RegisteredUser registeredUser) {
-        return service.createRegisteredUser(registeredUser);
-    }
+
 
     @PutMapping("/api/registeredUsers")
     public RegisteredUser updateRegisteredUser(
@@ -45,5 +42,31 @@ public class RegisteredUserController {
             @PathVariable("registeredUserId") Integer registeredUserId) {
         service.deleteRegisteredUser(registeredUserId);
     }
+
+    @PostMapping("/api/registeredUsers")
+    public RegisteredUser createRegisteredUser(
+            HttpSession session,
+            @RequestBody RegisteredUser registeredUser) {
+        return service.createRegisteredUser(session, registeredUser);
+    }
+
+    @PostMapping("/api/registeredUser/profile")
+    public RegisteredUser profile(HttpSession session) {
+        RegisteredUser profile = (RegisteredUser)session.getAttribute("profile");
+        return profile;
+    }
+
+    @PostMapping("/api/registeredUser/logout")
+    public void logout(HttpSession session) {
+        service.logout(session);
+    }
+
+    @PostMapping("/api/registeredUser/login")
+    public RegisteredUser login(HttpSession session,
+                      @RequestBody RegisteredUser user) {
+        return service.login(session, user);
+    }
+
+
 
 }

@@ -5,6 +5,10 @@ import com.example.cs5610fall2020projectteam23serverjava.models.User;
 import com.example.cs5610fall2020projectteam23serverjava.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,9 +25,7 @@ public class UserService {
         return (List<User>) userRepository.findAll();
     }
 
-    public User createUser (User user) {
-        return userRepository.save(user);
-    }
+
 
     public User updateUser(
             User newUser) {
@@ -44,5 +46,34 @@ public class UserService {
             Integer userId) {
         userRepository.deleteById(userId);
     }
+
+    public void logout(HttpSession session) {
+        session.invalidate();
+    }
+
+    public User login(HttpSession session,
+                      @RequestBody User user) {
+        User profile = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+        session.setAttribute("profile", profile);
+        return profile;
+    }
+
+    public User register(HttpSession session,
+                         @RequestBody User user) {
+        User newUser = userRepository.save(user);
+        newUser.setPassword("***");
+        session.setAttribute("profile", newUser);
+        return newUser;
+    }
+
+
+    @PostMapping("/profile")
+    public User profile(HttpSession session) {
+        User profile = (User)session.getAttribute("profile");
+        return profile;
+    }
+
+
+
 
 }
