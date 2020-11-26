@@ -7,29 +7,18 @@ import java.util.List;
 @Entity
 @Table(name="registerUsers")
 public class RegisteredUser extends User{
-    private Date dob;
     private String phone;
 
     public RegisteredUser() {
     }
 
-    public RegisteredUser(Date dob, String phone) {
-        this.dob = dob;
+    public RegisteredUser(String phone) {
         this.phone = phone;
     }
 
-    public RegisteredUser(Integer userId, String username, String password, String email, List<Review> reviews, Date dob, String phone) {
-        super(userId, username, password, email, reviews);
-        this.dob = dob;
+    public RegisteredUser(Integer userId, String username, String password, String email, List<Review> moviesReview, List<Favorite> moviesFavorite, String phone) {
+        super(userId, username, password, email, moviesReview, moviesFavorite);
         this.phone = phone;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date DOB) {
-        this.dob = DOB;
     }
 
     public String getPhone() {

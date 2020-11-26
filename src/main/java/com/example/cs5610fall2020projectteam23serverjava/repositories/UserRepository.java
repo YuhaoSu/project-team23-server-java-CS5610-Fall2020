@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserRepository
     extends CrudRepository<User, Integer> {
 
-    @Query("select user from User user where id=:userId")
+    @Query("select user from User user where userId=:userId")
     public User findUserById(
             @Param("userId") Integer userId);
 }

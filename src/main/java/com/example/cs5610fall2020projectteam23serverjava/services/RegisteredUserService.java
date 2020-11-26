@@ -38,7 +38,6 @@ public class RegisteredUserService {
             registeredUser.setEmail(newRegisteredUser.getEmail());
             registeredUser.setPassword(newRegisteredUser.getPassword());
             registeredUser.setUsername(newRegisteredUser.getUsername());
-            registeredUser.setDob(newRegisteredUser.getDob());
             registeredUser.setPhone(newRegisteredUser.getPhone());
             return registeredUserRepository.save(registeredUser);
         } else {

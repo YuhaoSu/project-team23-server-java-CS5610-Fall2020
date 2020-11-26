@@ -19,6 +19,12 @@ public class MovieController {
         return service.findMovieById(id);
     }
 
+    @GetMapping("/api/movies/imdb/{imdbId}")
+    public Movie findMovieByImdbId(
+            @PathVariable("imdbId") String imdbId) {
+        return service.findMovieByImdbId(imdbId);
+    }
+
     @GetMapping("/api/movies")
     public List<Movie> findAllMovie() {
         return service.findAllMovie();

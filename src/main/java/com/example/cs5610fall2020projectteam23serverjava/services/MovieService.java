@@ -18,6 +18,10 @@ public class MovieService {
         return movieRepository.findById(movieId).get();
     }
 
+    public Movie findMovieByImdbId (String imdbId) {
+         return movieRepository.findMovieByImdbId(imdbId);
+    }
+
     public List<Movie> findAllMovie() {
         return (List<Movie>) movieRepository.findAll();
     }
@@ -32,7 +36,7 @@ public class MovieService {
         Optional newMovieTemp = movieRepository.findById(newMovie.getMovieId());
         if(newMovieTemp.isPresent()) {
             Movie movie = (Movie) newMovieTemp.get();
-            movie.setImdbID(newMovie.getTitle());
+            movie.setImdbId(newMovie.getImdbId());
             movie.setTitle(newMovie.getTitle());
             movie.setYear(newMovie.getYear());
 

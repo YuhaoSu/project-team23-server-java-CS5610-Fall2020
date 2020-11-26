@@ -13,12 +13,20 @@ public class User {
     private String password;
     private String email;
     @OneToMany(mappedBy = "user")
-    private List<Review> movies;
+    private List<Review> moviesReview;
+    @OneToMany(mappedBy = "user")
+    private List<Favorite> moviesFavorite;
 
     public User() {
     }
 
-    public User(Integer userId, String username, String password, String email, List<Review> movies) {
+    public User(Integer userId, String username, String password, String email, List<Review> moviesReview, List<Favorite> moviesFavorite) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.moviesReview = moviesReview;
+        this.moviesFavorite = moviesFavorite;
     }
 
     public Integer getUserId() {
@@ -53,11 +61,19 @@ public class User {
         this.email = email;
     }
 
-    public List<Review> getReviews() {
-        return movies;
+    public List<Review> getMoviesReview() {
+        return moviesReview;
     }
 
-    public void setReviews(List<Review> movies) {
-        this.movies = movies;
+    public void setMoviesReview(List<Review> moviesReview) {
+        this.moviesReview = moviesReview;
+    }
+
+    public List<Favorite> getMoviesFavorite() {
+        return moviesFavorite;
+    }
+
+    public void setMoviesFavorite(List<Favorite> moviesFavorite) {
+        this.moviesFavorite = moviesFavorite;
     }
 }

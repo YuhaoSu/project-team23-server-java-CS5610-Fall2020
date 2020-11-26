@@ -9,21 +9,24 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer movieId;
-    private String imdbID;
+    private String imdbId;
     private String title;
     private String year;
     @OneToMany(mappedBy = "movie")
-    private List<Review> users;
+    private List<Review> usersReview;
+    @OneToMany(mappedBy = "movie")
+    private List<Favorite> usersFavorite;
 
     public Movie () {
     }
 
-    public Movie(Integer movieId, String imdbID, String title, String year, List<Review> users) {
+    public Movie(Integer movieId, String imdbId, String title, String year, List<Review> usersReview, List<Favorite> usersFavorite) {
         this.movieId = movieId;
-        this.imdbID = imdbID;
+        this.imdbId = imdbId;
         this.title = title;
         this.year = year;
-        this.users = users;
+        this.usersReview = usersReview;
+        this.usersFavorite = usersFavorite;
     }
 
     public Integer getMovieId() {
@@ -34,12 +37,12 @@ public class Movie {
         this.movieId = movieId;
     }
 
-    public String getImdbID() {
-        return imdbID;
+    public String getImdbId() {
+        return imdbId;
     }
 
-    public void setImdbID(String imdbID) {
-        this.imdbID = imdbID;
+    public void setImdbId(String imdbId) {
+        this.imdbId = imdbId;
     }
 
     public String getTitle() {
@@ -58,11 +61,19 @@ public class Movie {
         this.year = year;
     }
 
-    public List<Review> getReviews() {
-        return users;
+    public List<Review> getUsersReview() {
+        return usersReview;
     }
 
-    public void setReviews(List<Review> users) {
-        this.users = users;
+    public void setUsersReview(List<Review> usersReview) {
+        this.usersReview = usersReview;
+    }
+
+    public List<Favorite> getUsersFavorite() {
+        return usersFavorite;
+    }
+
+    public void setUsersFavorite(List<Favorite> usersFavorite) {
+        this.usersFavorite = usersFavorite;
     }
 }
