@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 public interface MovieRepository
     extends CrudRepository<Movie, Integer> {
 
-    @Query("select movie from Movie movie where movie.imdbId=:imdbId")
+    @Query("select movie from Movie movie where movie.imdbID=:imdbId")
     public Movie findMovieByImdbId(
             @Param("imdbId") String imdbId);
 

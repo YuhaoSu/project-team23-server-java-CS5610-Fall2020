@@ -9,7 +9,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer movieId;
-    private String imdbId;
+    private String imdbID;
     private String title;
     private String year;
     @OneToMany(mappedBy = "movie")
@@ -20,9 +20,9 @@ public class Movie {
     public Movie () {
     }
 
-    public Movie(Integer movieId, String imdbId, String title, String year, List<Review> usersReview, List<Favorite> usersFavorite) {
+    public Movie(Integer movieId, String imdbID, String title, String year, List<Review> usersReview, List<Favorite> usersFavorite) {
         this.movieId = movieId;
-        this.imdbId = imdbId;
+        this.imdbID = imdbID;
         this.title = title;
         this.year = year;
         this.usersReview = usersReview;
@@ -37,12 +37,12 @@ public class Movie {
         this.movieId = movieId;
     }
 
-    public String getImdbId() {
-        return imdbId;
+    public String getimdbID() {
+        return imdbID;
     }
 
-    public void setImdbId(String imdbId) {
-        this.imdbId = imdbId;
+    public void setimdbID(String imdbID) {
+        this.imdbID = imdbID;
     }
 
     public String getTitle() {
