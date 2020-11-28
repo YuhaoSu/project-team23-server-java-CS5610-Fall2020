@@ -26,7 +26,6 @@ public class UserService {
     }
 
 
-
     public User updateUser(
             User newUser) {
 
@@ -36,6 +35,7 @@ public class UserService {
             user.setEmail(newUser.getEmail());
             user.setPassword(newUser.getPassword());
             user.setUsername(newUser.getUsername());
+            user.setUserStatus(newUser.getUserStatus());
             return userRepository.save(user);
         } else {
             return null;
@@ -61,7 +61,7 @@ public class UserService {
     public User register(HttpSession session,
                          @RequestBody User user) {
         User newUser = userRepository.save(user);
-        newUser.setPassword("***");
+        newUser.setPassword("***"); // questions do we need this?
         session.setAttribute("profile", newUser);
         return newUser;
     }

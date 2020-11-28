@@ -37,7 +37,7 @@ public class AdministratorService {
             administrator.setEmail(newAdministrator.getEmail());
             administrator.setPassword(newAdministrator.getPassword());
             administrator.setUsername(newAdministrator.getUsername());
-            administrator.setAdmin(newAdministrator.getAdmin());
+            administrator.setAdminId(newAdministrator.getAdminId()); //admin id
             return administratorRepository.save(administrator);
         } else {
             return null;

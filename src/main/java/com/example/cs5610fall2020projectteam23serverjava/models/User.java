@@ -12,6 +12,7 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String userStatus;
     @OneToMany(mappedBy = "user")
     private List<Review> moviesReview;
     @OneToMany(mappedBy = "user")
@@ -20,11 +21,12 @@ public class User {
     public User() {
     }
 
-    public User(Integer userId, String username, String password, String email, List<Review> moviesReview, List<Favorite> moviesFavorite) {
+    public User(Integer userId, String username, String password, String email, String userStatus, List<Review> moviesReview, List<Favorite> moviesFavorite) {
         this.userId = userId;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.userStatus = userStatus;
         this.moviesReview = moviesReview;
         this.moviesFavorite = moviesFavorite;
     }
@@ -75,5 +77,13 @@ public class User {
 
     public void setMoviesFavorite(List<Favorite> moviesFavorite) {
         this.moviesFavorite = moviesFavorite;
+    }
+
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
     }
 }

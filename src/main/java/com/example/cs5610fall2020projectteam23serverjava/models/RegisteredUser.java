@@ -16,8 +16,8 @@ public class RegisteredUser extends User{
         this.phone = phone;
     }
 
-    public RegisteredUser(Integer userId, String username, String password, String email, List<Review> moviesReview, List<Favorite> moviesFavorite, String phone) {
-        super(userId, username, password, email, moviesReview, moviesFavorite);
+    public RegisteredUser(Integer userId, String username, String password, String email,String userStatus, List<Review> moviesReview, List<Favorite> moviesFavorite, String phone) {
+        super(userId, username, password, email, userStatus, moviesReview, moviesFavorite);
         this.phone = phone;
     }
 
