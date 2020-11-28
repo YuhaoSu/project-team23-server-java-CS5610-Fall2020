@@ -28,9 +28,8 @@ public class FavoriteController {
    @PostMapping("/api/favorites/{userId}/for/{movieId}")
     public Favorite createFavorite(
             @PathVariable("userId") Integer userId,
-            @PathVariable("movieId") Integer movieId,
-            @RequestBody Favorite newFavorite) {
-        return service.createFavorite(userId, movieId, newFavorite);
+            @PathVariable("movieId") Integer movieId) {
+        return service.createFavorite(userId, movieId);
     }
 
     @PutMapping("/api/favorites/{userId}/for/{movieId}")

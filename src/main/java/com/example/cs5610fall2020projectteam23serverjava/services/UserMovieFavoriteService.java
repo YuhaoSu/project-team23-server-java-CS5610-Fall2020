@@ -22,8 +22,7 @@ public class UserMovieFavoriteService {
 
     public Favorite createFavorite(
             Integer userId,
-            Integer movieId,
-            Favorite newFavorite) {
+            Integer movieId) {
         Favorite favorite = new Favorite();
         favorite.setUserId(userId);
         favorite.setMovieId(movieId);
