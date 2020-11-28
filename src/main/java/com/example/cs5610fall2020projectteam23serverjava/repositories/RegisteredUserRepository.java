@@ -16,4 +16,6 @@ public interface RegisteredUserRepository
             @Param("password") String password
     );
 
+
+
 }

@@ -8,6 +8,7 @@ import com.example.cs5610fall2020projectteam23serverjava.services.RegisteredUser
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -28,11 +29,6 @@ public class AdministratorController {
         return service.findAllAdministrator();
     }
 
-    @PostMapping("/api/administrators")
-    public Administrator createAdministrator(
-            @RequestBody Administrator administrator) {
-        return service.createAdministrator(administrator);
-    }
 
     @PutMapping("/api/administrators")
     public Administrator updateAdministrator(
@@ -44,6 +40,30 @@ public class AdministratorController {
     public void deleteAdministrator(
             @PathVariable("administratorId") Integer administratorId) {
         service.deleteAdministrator(administratorId);
+    }
+
+    @PostMapping("/api/administrators")
+    public Administrator createAdministrator(
+            HttpSession session,
+            @RequestBody Administrator administrator) {
+        return service.createAdministrator(session, administrator);
+    }
+
+    @PostMapping("/api/administrator/profile")
+    public Administrator profile(HttpSession session) {
+        Administrator profile = (Administrator)session.getAttribute("profile");
+        return profile;
+    }
+
+    @PostMapping("/api/administrator/logout")
+    public void logout(HttpSession session) {
+        service.logout(session);
+    }
+
+    @PostMapping("/api/administrator/login")
+    public Administrator login(HttpSession session,
+                                @RequestBody Administrator user) {
+        return service.login(session, user);
     }
 
 

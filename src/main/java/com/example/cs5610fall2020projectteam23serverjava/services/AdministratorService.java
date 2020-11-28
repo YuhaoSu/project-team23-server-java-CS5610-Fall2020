@@ -7,7 +7,10 @@ import com.example.cs5610fall2020projectteam23serverjava.repositories.Administra
 import com.example.cs5610fall2020projectteam23serverjava.repositories.RegisteredUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,4 +52,29 @@ public class AdministratorService {
         administratorRepository.deleteById(administratorId);
     }
 
+
+
+    public Administrator createAdministrator(HttpSession session,
+                                             @RequestBody Administrator administrator) {
+        Administrator newAdministrator = administratorRepository.save(administrator);
+        session.setAttribute("profile", newAdministrator);
+        return newAdministrator;
+    }
+
+    public Administrator login(HttpSession session,
+                                @RequestBody User user) {
+        Administrator profile = administratorRepository.findAdministratorByCredentials(user.getUsername(), user.getPassword());
+        session.setAttribute("profile", profile);
+        return profile;
+    }
+
+    public void logout(HttpSession session) {
+        session.invalidate();
+    }
+
+    @PostMapping("/profile")
+    public User profile(HttpSession session) {
+        User profile = (User)session.getAttribute("profile");
+        return profile;
+    }
 }
