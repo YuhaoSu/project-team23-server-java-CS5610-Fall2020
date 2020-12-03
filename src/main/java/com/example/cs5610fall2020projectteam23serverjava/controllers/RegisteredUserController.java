@@ -18,7 +18,7 @@ public class RegisteredUserController {
     RegisteredUserService service;
 
     @GetMapping("/api/registeredUser/{registeredUserId}")
-    public RegisteredUser findRegisteredUserId(
+    public RegisteredUser findRegisteredUserById(
             @PathVariable("registeredUserId") Integer id) {
         return service.findUserById(id);
     }

@@ -1,6 +1,7 @@
 package com.example.cs5610fall2020projectteam23serverjava.controllers;
 
 //import com.example.cs5610fall2020projectteam23serverjava.models.Administrator;
+import com.example.cs5610fall2020projectteam23serverjava.models.RegisteredUser;
 import com.example.cs5610fall2020projectteam23serverjava.models.User;
 import com.example.cs5610fall2020projectteam23serverjava.services.UserService;
 
@@ -59,10 +60,11 @@ public class UserController {
         service.logout(session);
     }
 
-    @PostMapping("/api/users//login")
+    @PostMapping("/api/users/login")
     public User login(HttpSession session,
                       @RequestBody User user) {
         return service.login(session, user);
     }
+
 
 }
