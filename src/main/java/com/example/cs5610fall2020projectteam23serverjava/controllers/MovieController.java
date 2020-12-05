@@ -47,4 +47,10 @@ public class MovieController {
             @PathVariable("movieId") Integer movieId) {
         service.deleteMovie(movieId);
     }
+
+    @GetMapping("/api/moviesVoted")
+    public List<Movie> findTopVotedMovie() {
+        return service.findTopVotedMovie();
+    }
+
 }

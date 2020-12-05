@@ -36,7 +36,7 @@ public class MovieService {
         Optional newMovieTemp = movieRepository.findById(newMovie.getMovieId());
         if(newMovieTemp.isPresent()) {
             Movie movie = (Movie) newMovieTemp.get();
-            movie.setimdbID(newMovie.getimdbID());
+            movie.setImdbID(newMovie.getImdbID());
             movie.setTitle(newMovie.getTitle());
             movie.setYear(newMovie.getYear());
 
@@ -51,4 +51,10 @@ public class MovieService {
             Integer movieId) {
         movieRepository.deleteById(movieId);
     }
+
+    public List<Movie> findTopVotedMovie() {
+        return (List<Movie>) movieRepository.findTopVotedMovie();
+    }
+
+
 }
