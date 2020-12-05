@@ -1,5 +1,6 @@
 package com.example.cs5610fall2020projectteam23serverjava.repositories;
 
+import com.example.cs5610fall2020projectteam23serverjava.models.Movie;
 import com.example.cs5610fall2020projectteam23serverjava.models.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -14,5 +15,10 @@ public interface UserRepository
             @Param("username") String username,
             @Param("password") String password
     );
+
+    @Query("select user FROM User user order by user.userId DESC ")
+    public List<User> findRecentUsers(
+    );
+
 
 }

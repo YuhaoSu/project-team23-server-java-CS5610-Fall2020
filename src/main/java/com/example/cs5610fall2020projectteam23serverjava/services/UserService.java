@@ -25,6 +25,9 @@ public class UserService {
         return (List<User>) userRepository.findAll();
     }
 
+    public List<User> findRecentUsers() {
+        return (List<User>) userRepository.findRecentUsers();
+    }
 
     public User updateUser(
             User newUser) {

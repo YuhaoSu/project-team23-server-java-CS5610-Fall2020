@@ -29,6 +29,10 @@ public class UserController {
         return service.findAllUsers();
     }
 
+    @GetMapping("/api/recentUsers")
+    public List<User> findRecentUsers() {
+        return service.findRecentUsers();
+    }
 
 
     @PostMapping("/api/users")
