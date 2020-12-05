@@ -39,6 +39,8 @@ public class UserService {
             user.setPassword(newUser.getPassword());
             user.setUsername(newUser.getUsername());
             user.setUserStatus(newUser.getUserStatus());
+            user.setMoviesReview(newUser.getMoviesReview());
+            user.setMoviesFavorite(newUser.getMoviesFavorite());
             return userRepository.save(user);
         } else {
             return null;

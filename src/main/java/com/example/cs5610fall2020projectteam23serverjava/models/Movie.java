@@ -12,7 +12,7 @@ public class Movie {
     private String imdbID;
     private String title;
     private String year;
-    private Integer imdbVotes;
+    private String imdbVotes;
     @OneToMany(mappedBy = "movie")
     private List<Review> usersReview;
     @OneToMany(mappedBy = "movie")
@@ -21,7 +21,7 @@ public class Movie {
     public Movie () {
     }
 
-    public Movie(Integer movieId, String imdbID, String title, String year, Integer imdbVotes, List<Review> usersReview, List<Favorite> usersFavorite) {
+    public Movie(Integer movieId, String imdbID, String title, String year, String imdbVotes, List<Review> usersReview, List<Favorite> usersFavorite) {
         this.movieId = movieId;
         this.imdbID = imdbID;
         this.title = title;
@@ -63,11 +63,11 @@ public class Movie {
         this.year = year;
     }
 
-    public Integer getImdbVotes() {
+    public String getImdbVotes() {
         return imdbVotes;
     }
 
-    public void setImdbVotes(Integer imdbVotes) {
+    public void setImdbVotes(String imdbVotes) {
         this.imdbVotes = imdbVotes;
     }
 
