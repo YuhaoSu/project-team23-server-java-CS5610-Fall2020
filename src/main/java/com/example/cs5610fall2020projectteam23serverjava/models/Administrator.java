@@ -8,25 +8,25 @@ import java.util.List;
 @Entity
 @Table(name="administrators")
 public class Administrator extends User{
-    private Integer adminId;
+    private String adminId;
 
     public Administrator() {
     }
 
-    public Administrator(Integer admin) {
+    public Administrator(String adminId) {
         this.adminId = adminId;
     }
 
-    public Administrator(Integer userId, String username, String password, String email, String userStatus, List<Review> moviesReview, List<Favorite> moviesFavorite, Integer adminId) {
-        super(userId, username, password, email,userStatus, moviesReview, moviesFavorite);
+    public Administrator(Integer userId, String username, String password, String email, String userStatus, List<Review> moviesReview, List<Favorite> moviesFavorite, String adminId) {
+        super(userId, username, password, email, userStatus, moviesReview, moviesFavorite);
         this.adminId = adminId;
     }
 
-    public Integer getAdminId() {
+    public String getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(Integer adminId) {
+    public void setAdminId(String adminId) {
         this.adminId = adminId;
     }
 }

@@ -48,9 +48,9 @@ public class MovieController {
         service.deleteMovie(movieId);
     }
 
-    @GetMapping("/api/moviesVoted")
-    public List<Movie> findTopVotedMovie() {
-        return service.findTopVotedMovie();
+    @GetMapping("/api/moviesRecentlyAdded")
+    public List<Movie> findRecentlyAddedMovie() {
+        return service.findRecentlyAddedMovie();
     }
 
 }

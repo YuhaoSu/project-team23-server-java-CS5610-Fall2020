@@ -66,7 +66,6 @@ public class UserService {
     public User register(HttpSession session,
                          @RequestBody User user) {
         User newUser = userRepository.save(user);
-        newUser.setPassword("***"); // questions do we need this?
         session.setAttribute("profile", newUser);
         return newUser;
     }
@@ -77,8 +76,4 @@ public class UserService {
         User profile = (User)session.getAttribute("profile");
         return profile;
     }
-
-
-
-
 }

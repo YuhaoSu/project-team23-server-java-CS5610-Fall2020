@@ -15,9 +15,7 @@ public interface MovieRepository
     public Movie findMovieByImdbId(
             @Param("imdbId") String imdbId);
 
-    @Query("select movie from Movie movie order by movie.imdbVotes DESC ")
-    public List<Movie> findTopVotedMovie(
+    @Query(value="SELECT * FROM cs5610fa20team23.movies order by movie_id DESC limit 0, 10;", nativeQuery = true)
+    public List<Movie> findRecentlyAddedMovie(
             );
-
-
 }

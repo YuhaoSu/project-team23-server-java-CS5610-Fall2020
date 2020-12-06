@@ -52,8 +52,8 @@ public class MovieService {
         movieRepository.deleteById(movieId);
     }
 
-    public List<Movie> findTopVotedMovie() {
-        return (List<Movie>) movieRepository.findTopVotedMovie();
+    public List<Movie> findRecentlyAddedMovie() {
+        return (List<Movie>) movieRepository.findRecentlyAddedMovie();
     }
 
 
