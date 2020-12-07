@@ -32,7 +32,7 @@ public class UserMovieFavoriteService {
         return favorite;
     }
 
-    public Favorite findFavoriteById (            Integer userId,
+    public Favorite findFavoriteById (        Integer userId,
                                               Integer movieId) {
         FavoriteId favoriteId = new FavoriteId();
         favoriteId.setUserId(userId);
