@@ -48,4 +48,11 @@ public class ReviewController {
             @PathVariable("movieId") Integer movieId) {
         service.deleteReview(userId, movieId);
     }
+
+    @GetMapping("/api/reviews/{movieId}")
+    public List<Review> findReviewsByMovieID(
+            @PathVariable("movieId") Integer movieId) {
+       return service.findReviewsByMovieID(movieId);
+    }
+
 }

@@ -76,4 +76,12 @@ public class UserMovieReviewService {
         reviewId.setMovieId(movieId);
         reviewRepository.deleteById(reviewId);
     }
+
+    public List<Review> findReviewsByMovieID(Integer movieId) {
+        return (List<Review>) reviewRepository.findReviewsByMovieID(movieId);
+    }
+
+
+
+
 }
