@@ -48,7 +48,7 @@ public class MovieController {
         service.deleteMovie(movieId);
     }
 
-    @GetMapping("/api/moviesRecentlyAdded")
+    @GetMapping("/api/movies/moviesRecentlyAdded")
     public List<Movie> findRecentlyAddedMovie() {
         return service.findRecentlyAddedMovie();
     }

@@ -31,7 +31,7 @@ public class UserController {
         return service.findAllUsers();
     }
 
-    @GetMapping("/api/recentUsers")
+    @GetMapping("/api/users/recentUsers")
     public List<User> findRecentUsers() {
         return service.findRecentUsers();
     }
