@@ -16,7 +16,7 @@ public interface UserRepository
             @Param("password") String password
     );
 
-    @Query(value="SELECT * FROM cs5610fa20team23.users order by user_id desc limit 0,10", nativeQuery = true)
+    @Query(value="SELECT * FROM users order by user_id desc limit 0,10", nativeQuery = true)
     public List<User> findRecentUsers(
     );
 

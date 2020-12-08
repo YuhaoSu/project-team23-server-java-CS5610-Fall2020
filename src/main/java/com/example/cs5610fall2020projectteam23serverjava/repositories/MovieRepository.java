@@ -13,7 +13,7 @@ public interface MovieRepository
     public Movie findMovieByImdbId(
             @Param("imdbId") String imdbId);
 
-    @Query(value="SELECT * FROM cs5610fa20team23.movies order by movie_id DESC limit 0, 10;", nativeQuery = true)
+    @Query(value="SELECT * FROM movies order by movie_id DESC limit 0, 10;", nativeQuery = true)
     public List<Movie> findRecentlyAddedMovie(
             );
 }
