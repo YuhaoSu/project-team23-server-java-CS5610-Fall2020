@@ -71,9 +71,9 @@ public class UserService {
     }
 
 
-    @PostMapping("/profile")
+/*    @PostMapping("/profile")
     public User profile(HttpSession session) {
         User profile = (User)session.getAttribute("profile");
         return profile;
-    }
+    }*/
 }

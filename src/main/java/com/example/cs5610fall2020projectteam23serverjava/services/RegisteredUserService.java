@@ -69,15 +69,13 @@ public class RegisteredUserService {
         return newUser;
     }
 
+/*
     @PostMapping("/profile")
     public User profile(HttpSession session) {
         User profile = (User)session.getAttribute("profile");
         return profile;
     }
 
-
-
-
-
+*/
 
 }
