@@ -55,14 +55,14 @@ public class AdministratorService {
 
 
     public Administrator createAdministrator(HttpSession session,
-                                             @RequestBody Administrator administrator) {
+                                             Administrator administrator) {
         Administrator newAdministrator = administratorRepository.save(administrator);
         session.setAttribute("profile", newAdministrator);
         return newAdministrator;
     }
 
     public Administrator login(HttpSession session,
-                                @RequestBody User user) {
+                                 User user) {
         Administrator profile = administratorRepository.findAdministratorByCredentials(user.getUsername(), user.getPassword());
         session.setAttribute("profile", profile);
         return profile;

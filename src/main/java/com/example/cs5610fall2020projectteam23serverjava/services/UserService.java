@@ -57,21 +57,30 @@ public class UserService {
     }
 
     public User login(HttpSession session,
-                      @RequestBody User user) {
+                      User user) {
         User profile = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
-        session.setAttribute("profile", profile);
         return profile;
     }
 
     public User register(HttpSession session,
-                         @RequestBody User user) {
+                         User user) {
         User newUser = userRepository.save(user);
         session.setAttribute("profile", newUser);
         return newUser;
     }
 
 
-/*    @PostMapping("/profile")
+/*
+
+    public User login(HttpSession session,
+                      @RequestBody User user) {
+        User profile = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+        session.setAttribute("profile", profile);
+        return profile;
+    }
+
+
+@PostMapping("/profile")
     public User profile(HttpSession session) {
         User profile = (User)session.getAttribute("profile");
         return profile;

@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 //@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
-@CrossOrigin(origins = "http://cs5610-client-react-team23.herokuapp.com", allowCredentials = "true")
+@CrossOrigin(origins = {"http://cs5610-client-react-team23.herokuapp.com", "http://localhost:3000"}, allowCredentials = "true")
 
 public class UserController {
     @Autowired
@@ -69,7 +69,9 @@ public class UserController {
     @PostMapping("/api/users/login")
     public User login(HttpSession session,
                       @RequestBody User user) {
-        return service.login(session, user);
+        User profile = service.login(session, user);
+        session.setAttribute("profile", profile);
+        return profile;
     }
 
 

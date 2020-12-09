@@ -56,14 +56,14 @@ public class RegisteredUserService {
     }
 
     public RegisteredUser login(HttpSession session,
-                      @RequestBody User user) {
+                       User user) {
         RegisteredUser profile = registeredUserRepository.findUserByCredentials(user.getUsername(), user.getPassword());
         session.setAttribute("profile", profile);
         return profile;
     }
 
     public RegisteredUser createRegisteredUser(HttpSession session,
-                         @RequestBody RegisteredUser registeredUser) {
+                         RegisteredUser registeredUser) {
         RegisteredUser newUser = registeredUserRepository.save(registeredUser);
         session.setAttribute("profile", newUser);
         return newUser;

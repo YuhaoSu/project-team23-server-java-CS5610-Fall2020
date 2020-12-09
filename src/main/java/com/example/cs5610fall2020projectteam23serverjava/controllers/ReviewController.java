@@ -10,7 +10,9 @@ import java.util.List;
 
 @RestController
 //@CrossOrigin(origins = "*")
-@CrossOrigin(origins = "http://cs5610-client-react-team23.herokuapp.com", allowCredentials = "true")
+//@CrossOrigin(origins = "http://cs5610-client-react-team23.herokuapp.com", allowCredentials = "true")
+@CrossOrigin(origins = {"http://cs5610-client-react-team23.herokuapp.com", "http://localhost:3000"}, allowCredentials = "true")
+
 public class ReviewController {
     @Autowired
     UserMovieReviewService service;
