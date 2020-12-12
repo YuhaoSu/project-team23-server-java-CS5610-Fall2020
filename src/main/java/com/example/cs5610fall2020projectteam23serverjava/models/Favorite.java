@@ -3,7 +3,6 @@ package com.example.cs5610fall2020projectteam23serverjava.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 
 @Entity

@@ -1,14 +1,11 @@
 package com.example.cs5610fall2020projectteam23serverjava.services;
 
 import com.example.cs5610fall2020projectteam23serverjava.models.Administrator;
-import com.example.cs5610fall2020projectteam23serverjava.models.RegisteredUser;
 import com.example.cs5610fall2020projectteam23serverjava.models.User;
 import com.example.cs5610fall2020projectteam23serverjava.repositories.AdministratorRepository;
-import com.example.cs5610fall2020projectteam23serverjava.repositories.RegisteredUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;

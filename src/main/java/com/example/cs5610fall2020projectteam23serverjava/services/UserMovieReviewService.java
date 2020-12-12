@@ -1,9 +1,8 @@
 package com.example.cs5610fall2020projectteam23serverjava.services;
 
-import com.example.cs5610fall2020projectteam23serverjava.models.Movie;
+
 import com.example.cs5610fall2020projectteam23serverjava.models.Review;
 import com.example.cs5610fall2020projectteam23serverjava.models.ReviewId;
-import com.example.cs5610fall2020projectteam23serverjava.models.User;
 import com.example.cs5610fall2020projectteam23serverjava.repositories.MovieRepository;
 import com.example.cs5610fall2020projectteam23serverjava.repositories.ReviewRepository;
 import com.example.cs5610fall2020projectteam23serverjava.repositories.UserRepository;
@@ -80,8 +79,5 @@ public class UserMovieReviewService {
     public List<Review> findReviewsByMovieID(Integer movieId) {
         return (List<Review>) reviewRepository.findReviewsByMovieID(movieId);
     }
-
-
-
 
 }

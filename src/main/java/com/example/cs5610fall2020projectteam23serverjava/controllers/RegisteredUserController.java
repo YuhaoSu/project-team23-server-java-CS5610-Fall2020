@@ -1,10 +1,8 @@
 package com.example.cs5610fall2020projectteam23serverjava.controllers;
 
-//import com.example.cs5610fall2020projectteam23serverjava.models.Administrator;
+
 import com.example.cs5610fall2020projectteam23serverjava.models.RegisteredUser;
-import com.example.cs5610fall2020projectteam23serverjava.models.User;
 import com.example.cs5610fall2020projectteam23serverjava.services.RegisteredUserService;
-import com.example.cs5610fall2020projectteam23serverjava.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +18,7 @@ public class RegisteredUserController {
     @Autowired
     RegisteredUserService service;
 
-    @GetMapping("/api/registeredUser/{registeredUserId}")
+    @GetMapping("/api/registeredUsers/{registeredUserId}")
     public RegisteredUser findRegisteredUserById(
             @PathVariable("registeredUserId") Integer id) {
         return service.findUserById(id);
@@ -40,7 +38,7 @@ public class RegisteredUserController {
         return service.updateRegisteredUser(newRegisteredUser);
     }
 
-    @DeleteMapping("/api/registeredUser/{registeredUserId}")
+    @DeleteMapping("/api/registeredUsers/{registeredUserId}")
     public void deleteRegisteredUser(
             @PathVariable("registeredUserId") Integer registeredUserId) {
         service.deleteRegisteredUser(registeredUserId);
@@ -53,23 +51,21 @@ public class RegisteredUserController {
         return service.createRegisteredUser(session, registeredUser);
     }
 
-    @PostMapping("/api/registeredUser/profile")
+    @PostMapping("/api/registeredUsers/profile")
     public RegisteredUser profile(HttpSession session) {
         RegisteredUser profile = (RegisteredUser)session.getAttribute("profile");
         return profile;
     }
 
-    @PostMapping("/api/registeredUser/logout")
+    @PostMapping("/api/registeredUsers/logout")
     public void logout(HttpSession session) {
         service.logout(session);
     }
 
-    @PostMapping("/api/registeredUser/login")
+    @PostMapping("/api/registeredUsers/login")
     public RegisteredUser login(HttpSession session,
                       @RequestBody RegisteredUser user) {
         return service.login(session, user);
     }
-
-
 
 }

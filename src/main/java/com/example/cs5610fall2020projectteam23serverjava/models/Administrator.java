@@ -2,7 +2,6 @@ package com.example.cs5610fall2020projectteam23serverjava.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.sql.Date;
 import java.util.List;
 
 @Entity

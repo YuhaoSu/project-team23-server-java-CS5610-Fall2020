@@ -1,13 +1,10 @@
 package com.example.cs5610fall2020projectteam23serverjava.controllers;
 
-//import com.example.cs5610fall2020projectteam23serverjava.models.Administrator;
-import com.example.cs5610fall2020projectteam23serverjava.models.RegisteredUser;
+
 import com.example.cs5610fall2020projectteam23serverjava.models.User;
 import com.example.cs5610fall2020projectteam23serverjava.services.UserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpSession;
 import java.util.List;
 

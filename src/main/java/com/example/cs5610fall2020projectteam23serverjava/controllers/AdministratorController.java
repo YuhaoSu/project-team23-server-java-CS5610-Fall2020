@@ -1,10 +1,7 @@
 package com.example.cs5610fall2020projectteam23serverjava.controllers;
 
 import com.example.cs5610fall2020projectteam23serverjava.models.Administrator;
-import com.example.cs5610fall2020projectteam23serverjava.models.RegisteredUser;
-import com.example.cs5610fall2020projectteam23serverjava.models.User;
 import com.example.cs5610fall2020projectteam23serverjava.services.AdministratorService;
-import com.example.cs5610fall2020projectteam23serverjava.services.RegisteredUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +17,7 @@ public class AdministratorController {
     @Autowired
     AdministratorService service;
 
-    @GetMapping("/api/administrator/{administratorId}")
+    @GetMapping("/api/administrators/{administratorId}")
     public Administrator findAdministratorById(
             @PathVariable("administratorId") Integer id) {
         return service.findAdministratorById(id);
@@ -39,7 +36,7 @@ public class AdministratorController {
         return service.updateAdministrator(newAdministrator);
     }
 
-    @DeleteMapping("/api/administrator/{administratorId}")
+    @DeleteMapping("/api/administrators/{administratorId}")
     public void deleteAdministrator(
             @PathVariable("administratorId") Integer administratorId) {
         service.deleteAdministrator(administratorId);
@@ -52,18 +49,18 @@ public class AdministratorController {
         return service.createAdministrator(session, administrator);
     }
 
-    @PostMapping("/api/administrator/profile")
+    @PostMapping("/api/administrators/profile")
     public Administrator profile(HttpSession session) {
         Administrator profile = (Administrator)session.getAttribute("profile");
         return profile;
     }
 
-    @PostMapping("/api/administrator/logout")
+    @PostMapping("/api/administrators/logout")
     public void logout(HttpSession session) {
         service.logout(session);
     }
 
-    @PostMapping("/api/administrator/login")
+    @PostMapping("/api/administrators/login")
     public Administrator login(HttpSession session,
                                 @RequestBody Administrator user) {
         return service.login(session, user);
